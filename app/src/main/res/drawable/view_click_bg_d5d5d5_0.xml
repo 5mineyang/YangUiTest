@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 没有选中 -->
+    <item android:state_pressed="false"
+        android:state_selected="false"
+        >
+        <shape>
+            <!--  按钮背景图 -->
+            <solid android:color="#D5D5D5" />
+            <!--  弧度 -->
+            <corners android:radius="0dp" />
+            <!--  边框宽度和颜色 -->
+            <stroke android:width="0dp" android:color="#00000000" />
+        </shape>
+    </item>
+
+    <!--  选中 -->
+    <item android:state_selected="true"
+        >
+        <shape>
+            <solid android:color="@color/colorPrimary" />
+            <corners android:radius="0dp" />
+            <stroke android:width="0dp" android:color="#51A2FF" />
+        </shape>
+    </item>
+
+    <!-- 点击事件 -->
+    <item android:state_pressed="true"
+        android:state_selected="false"
+        >
+        <shape>
+            <solid android:color="@color/view_click_bg" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+</selector>

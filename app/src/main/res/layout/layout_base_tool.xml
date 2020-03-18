@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlTool"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/colorPrimary"
+    >
+
+    <ImageView
+        android:id="@+id/ivToolBack"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:src="@drawable/btn_back"
+        />
+
+    <TextView
+        android:id="@+id/tvToolTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/ivToolRightTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="3dp"
+        android:layout_toStartOf="@+id/ivToolRightOne"
+        android:padding="8dp"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/ivToolRightOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/tvToolRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        />
+</RelativeLayout>

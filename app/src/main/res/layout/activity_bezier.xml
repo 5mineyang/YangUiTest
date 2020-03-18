@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include
+        layout="@layout/layout_base_tool"
+        />
+
+    <com.yang.yanguitest.view.bezier.BezierView
+        android:id="@+id/bzvBezierActivity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        >
+
+        <TextView
+            android:id="@+id/tvBezierActivityRecursion"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/view_click_bg_d5d5d5_0"
+            android:gravity="center"
+            android:text="递归计算\n(随机生成最多11介 多了反应不动了)"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:id="@+id/tvBezierActivityErgodic"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/view_click_bg_d5d5d5_0"
+            android:gravity="center"
+            android:text="杨辉三角计算\n(随机生成最多111介)"
+            android:textSize="10sp"
+            />
+    </LinearLayout>
+</LinearLayout>

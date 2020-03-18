@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#666666"
+    android:orientation="vertical"
+    >
+    <!--android:clipChildren="false"-->
+
+    <include
+        layout="@layout/layout_base_tool"
+        />
+
+    <TextView
+        android:id="@+id/tvDragBubbleActivityReset"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:background="@drawable/view_click_bg_d5d5d5_5"
+        android:gravity="center"
+        android:text="随机生成坐标"
+        />
+
+    <com.yang.yanguitest.view.bezier.DragBubbleView
+        android:id="@+id/dbvDragBubbleActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:bubble_color="#ff0000"
+        app:bubble_radius="10dp"
+        app:bubble_text="5"
+        app:bubble_text_color="#ffffff"
+        app:bubble_text_size="12dp"
+        />
+</RelativeLayout>
