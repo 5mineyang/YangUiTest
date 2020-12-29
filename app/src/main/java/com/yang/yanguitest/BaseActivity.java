@@ -119,8 +119,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      **/
 
     //跳转到相关aty
-    protected void intentIntoActivity(int tvMainActivityGallery, final Class clz) {
-        findViewById(tvMainActivityGallery).setOnClickListener(new View.OnClickListener() {
+    protected void intentIntoActivity(int viewId, final Class clz) {
+        findViewById(viewId).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, clz));

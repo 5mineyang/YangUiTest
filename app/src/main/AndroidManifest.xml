@@ -20,6 +20,8 @@
         <activity android:name=".activity.BezierActivity" />
         <activity android:name=".activity.DragBubbleActivity" />
         <activity android:name=".activity.PathMeasureActivity" />
+        <activity android:name=".activity.BehaviorActivity"/>
+        <activity android:name=".activity.RecyclerViewActivity"/>
     </application>
 
 </manifest>

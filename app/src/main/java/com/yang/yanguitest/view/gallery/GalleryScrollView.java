@@ -60,7 +60,7 @@ public class GalleryScrollView extends HorizontalScrollView {
         int scrollX = getScrollX();
         //通过滑动x坐标 可以得到当前滑动到了第几个view
         int leftIndex = scrollX / mChildWidth;
-        //遍历所有子view 设置level，然后在Drawable的onLevelChange方法里处理
+        //遍历所有子view 设置level 然后在Drawable的onLevelChange方法里处理
         for (int i = 0; i < mLinearLayout.getChildCount(); i++) {
             //已经滑到的图片 左边的和右边的都要处理
             if (i == leftIndex || i == leftIndex + 1) {

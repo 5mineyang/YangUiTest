@@ -36,19 +36,13 @@
                 <TextView
                     android:id="@+id/tvMainActivityGallery"
                     style="@style/main_text_style"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="横向滑动改变中间选中图片"
                     />
 
                 <TextView
                     android:id="@+id/tvMainActivityBezier"
                     style="@style/main_text_style"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_weight="1"
                     android:text="贝塞尔点击刷新"
                     />
             </LinearLayout>
@@ -62,20 +56,34 @@
                 <TextView
                     android:id="@+id/tvMainActivityDrag"
                     style="@style/main_text_style"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="QQ气泡效果"
                     />
 
                 <TextView
                     android:id="@+id/tvMainActivityPath"
                     style="@style/main_text_style"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_weight="1"
                     android:text="pathMeasure动画"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/tvMainActivityBehavior"
+                    style="@style/main_text_style"
+                    android:text="自定义LinerLayout嵌套滑动"
+                    />
+
+                <TextView
+                    android:id="@+id/tvMainActivityRecyclerView"
+                    style="@style/main_text_style"
+                    android:layout_marginStart="8dp"
+                    android:text="手写RecyclerView"
                     />
             </LinearLayout>
         </LinearLayout>

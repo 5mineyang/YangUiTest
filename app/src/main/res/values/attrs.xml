@@ -7,4 +7,9 @@
         <attr name="bubble_text_size" format="dimension"/>
         <attr name="bubble_text_color" format="color"/>
     </declare-styleable>
+
+    <!-- 嵌套滑动 -->
+    <declare-styleable name="MyNestedLinearLayout">
+        <attr name="layout_behavior" format="string"/>
+    </declare-styleable>
 </resources>
