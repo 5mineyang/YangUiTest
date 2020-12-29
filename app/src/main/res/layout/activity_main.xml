@@ -84,6 +84,7 @@
                     style="@style/main_text_style"
                     android:layout_marginStart="8dp"
                     android:text="手写RecyclerView"
+                    android:visibility="invisible"
                     />
             </LinearLayout>
         </LinearLayout>
