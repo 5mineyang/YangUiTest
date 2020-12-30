@@ -10,5 +10,9 @@
         layout="@layout/layout_base_tool"
         />
 
-
+    <com.yang.yanguitest.view.recyclerView.MyRecyclerView
+        android:id="@+id/rvRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
 </LinearLayout>
