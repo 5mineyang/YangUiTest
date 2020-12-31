@@ -22,21 +22,23 @@ public class MyRecyclerView extends ViewGroup {
     private Recycler recycler;      //item回收池
     private List<View> itemList;    //当前屏幕里的item
     private int[] heights;          //各个item的高
+    private int touchSlop;          //最小滑动距离
     private int width, height;      //当前宽高
     private int currentPosition;    //当前第一个item的位置
     private float currentY;         //手指按下的位置
     private int scrollY;            //y偏移量
     private boolean needRelayout;   //是否需要重新布局
-    private int touchSlop;          //最小滑动距离
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            int y = msg.arg2 - msg.arg1 > 8 ? 8 : msg.arg2 - msg.arg1;
+            int y = msg.arg2 < 0 ?
+                    msg.arg2 - msg.arg1 < -8 ? -8 : msg.arg2 - msg.arg1 :
+                    msg.arg2 - msg.arg1 > 8 ? 8 : msg.arg2 - msg.arg1;
             scrollBy(0, y);
-            if (msg.arg2 - msg.arg1 > 8) {
+            if (y != msg.arg2 - msg.arg1) {
                 Message message = new Message();
-                message.arg1 = msg.arg1 + 8;
+                message.arg1 = msg.arg1 + (msg.arg2 < 0 ? -8 : 8);
                 message.arg2 = msg.arg2;
                 handler.sendMessageDelayed(message, 1);
             } else {
@@ -145,9 +147,9 @@ public class MyRecyclerView extends ViewGroup {
             case MotionEvent.ACTION_CANCEL:
                 //松开手回弹动画
                 if (currentPosition <= 0 && scrollY < 0) {
-                    startAnim(scrollY);
-                } else {
-                    Log.i("yang5", "scrollY底部:" + scrollY);
+                    startAnim(Math.abs(scrollY));
+                } else if (scrollY > sumArray(currentPosition, heights.length - currentPosition) - height) {
+                    startAnim(-(scrollY - (sumArray(currentPosition, heights.length - currentPosition) - height)));
                 }
                 break;
         }
@@ -158,6 +160,14 @@ public class MyRecyclerView extends ViewGroup {
     public void scrollBy(int x, int y) {
         changeView(y);
         super.scrollBy(x, y);
+    }
+
+    @Override
+    public void removeView(View view) {
+        super.removeView(view);
+        int key = (int) view.getTag(R.id.tag_type_view);
+        //view添加至栈
+        recycler.put(view, key);
     }
 
     //改变view
@@ -172,7 +182,7 @@ public class MyRecyclerView extends ViewGroup {
                 currentPosition++;
             }
             //添加最下面item
-            while (currentPosition + itemList.size() < heights.length && getFillHeight() < height) {
+            while (currentPosition + itemList.size() < heights.length && sumArray(currentPosition, itemList.size()) - scrollY < height) {
                 //要添加item的位置
                 int addPosition = currentPosition + itemList.size();
                 //生成view
@@ -180,11 +190,7 @@ public class MyRecyclerView extends ViewGroup {
                 itemList.add(view);
             }
         } else if (scrollY < 0) {   //下滑
-            if (getFillHeight() + scrollY > height) {
-                //移除最下面item
-                if (getFillHeight() + scrollY - heights[itemList.size() - 1] > height) {
-                    removeView(itemList.remove(itemList.size() - 1));
-                }
+            if (sumArray(currentPosition, itemList.size()) > height) {
                 //添加最上面item
                 while (currentPosition > 0) {
                     int addPosition = currentPosition - 1;
@@ -192,6 +198,10 @@ public class MyRecyclerView extends ViewGroup {
                     itemList.add(0, view);
                     scrollY += heights[addPosition];
                     currentPosition--;
+                }
+                //移除最下面item
+                if (sumArray(currentPosition, itemList.size()) - heights[itemList.size() - 1] > height) {
+                    removeView(itemList.remove(itemList.size() - 1));
                 }
             }
         }
@@ -216,9 +226,9 @@ public class MyRecyclerView extends ViewGroup {
         int viewType = adapter.getItemViewType(position);
         //根据viewType 从栈中拿view
         View view = recycler.get(viewType);
-        View itemView;
+        View itemView = null;
         if (null == view) {
-            itemView = adapter.onCreateViewHolder(position, null, this);
+            itemView = adapter.onCreateViewHolder(position, itemView, this);
             if (itemView == null) {
                 throw new RuntimeException("onCreateViewHolder没有填充布局");
             }
@@ -237,11 +247,6 @@ public class MyRecyclerView extends ViewGroup {
         return itemView;
     }
 
-    //获取到显示在控件中的item总高度
-    private int getFillHeight() {
-        return sumArray(currentPosition, itemList.size()) - scrollY;
-    }
-
     //获取指定位置开始 多少个item的高度
     private int sumArray(int startPosition, int count) {
         int sum = 0;
@@ -255,7 +260,7 @@ public class MyRecyclerView extends ViewGroup {
     private void startAnim(int scrollY) {
         Message message = new Message();
         message.arg1 = 0;
-        message.arg2 = Math.abs(scrollY);
+        message.arg2 = scrollY;
         handler.sendMessage(message);
     }
 
