@@ -13,7 +13,7 @@
         <item name="android:padding">10dp</item>
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/view_click_bg_d5d5d5_5</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">11sp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
