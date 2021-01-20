@@ -56,7 +56,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
             @Override
             public int getCount() {
-                return 40;
+                return 50;
             }
 
             @Override
